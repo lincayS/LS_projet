@@ -1,0 +1,49 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Libre Baskerville', serif;
+}
+body{
+    
+    height: 100vh;
+}
+
+#half{
+    
+    margin-top: 10%;
+    margin-left: 10%;
+    display: flex;
+    
+
+}
+#titre{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+}
+
+
+p{
+    font-size: 6em;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+h1{
+    font-weight: normal;
+    display: flex;
+}
+
+
+
+@media only screen and (max-width:730px) {
+  #half{
+      flex-direction: column;
+      margin-top: 20px;
+  }
+  #titre{
+align-items: center;  }
+}
+
