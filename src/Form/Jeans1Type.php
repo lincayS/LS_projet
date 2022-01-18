@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Jeans;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,9 @@ class Jeans1Type extends AbstractType
             ->add('name')
             ->add('description')
             ->add('price')
-            ->add('picture')
+            ->add('picture', FileType::class, [
+                'mapped' => false
+            ])
         ;
     }
 

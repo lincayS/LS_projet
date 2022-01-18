@@ -23,7 +23,7 @@
                 <td>{{ jeans.name }}</td>
                 <td>{{ jeans.description }}</td>
                 <td>{{ jeans.price }}</td>
-                <td>{{ jeans.picture }}</td>
+                <td>  <img src="{{ asset('uploads/' ~ jeans.picture) }}" class=" w-25 " alt="jeans"> </td>
                 <td>
                     <a href="{{ path('admin_jeans_show', {'id': jeans.id}) }}">show</a>
                     <a href="{{ path('admin_jeans_edit', {'id': jeans.id}) }}">edit</a>

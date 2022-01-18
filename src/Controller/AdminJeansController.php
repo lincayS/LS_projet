@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Jeans;
 use App\Form\Jeans1Type;
 use App\Repository\JeansRepository;
+use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,13 +30,20 @@ class AdminJeansController extends AbstractController
     /**
      * @Route("/new", name="admin_jeans_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
         $jeans = new Jeans();
         $form = $this->createForm(Jeans1Type::class, $jeans);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+           
+            $imageFile = $form->get('picture')->getData();
+            if ($imageFile) {
+                $imageFileName = $fileUploader->upload($imageFile);
+                $jeans->setPicture($imageFileName);
+            }
+           
             $entityManager->persist($jeans);
             $entityManager->flush();
 
@@ -61,12 +69,21 @@ class AdminJeansController extends AbstractController
     /**
      * @Route("/{id}/edit", name="admin_jeans_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Jeans $jeans, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Jeans $jeans, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(Jeans1Type::class, $jeans);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $imageFile = $form->get('picture')->getData();
+            if ($imageFile) {
+                $imageFileName = $fileUploader->upload($imageFile);
+                $jeans->setPicture($imageFileName);
+            }
+           
+
             $entityManager->flush();
 
             return $this->redirectToRoute('admin_jeans_index', [], Response::HTTP_SEE_OTHER);
