@@ -37,6 +37,61 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $password;
 
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $prenom;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $addNumero;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $rue;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    private $complement;
+
+    /**
+     * @ORM\Column(type="string", length=10)
+     */
+    private $codePostal;
+
+    /**
+     * @ORM\Column(type="string", length=45)
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $hanches;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $bassin;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $cuisses;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $jambes;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -124,5 +179,137 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getAddNumero(): ?int
+    {
+        return $this->addNumero;
+    }
+
+    public function setAddNumero(int $addNumero): self
+    {
+        $this->addNumero = $addNumero;
+
+        return $this;
+    }
+
+    public function getRue(): ?string
+    {
+        return $this->rue;
+    }
+
+    public function setRue(string $rue): self
+    {
+        $this->rue = $rue;
+
+        return $this;
+    }
+
+    public function getComplement(): ?string
+    {
+        return $this->complement;
+    }
+
+    public function setComplement(string $complement): self
+    {
+        $this->complement = $complement;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?string
+    {
+        return $this->codePostal;
+    }
+
+    public function setCodePostal(string $codePostal): self
+    {
+        $this->codePostal = $codePostal;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getHanches(): ?float
+    {
+        return $this->hanches;
+    }
+
+    public function setHanches(float $hanches): self
+    {
+        $this->hanches = $hanches;
+
+        return $this;
+    }
+
+    public function getBassin(): ?float
+    {
+        return $this->bassin;
+    }
+
+    public function setBassin(float $bassin): self
+    {
+        $this->bassin = $bassin;
+
+        return $this;
+    }
+
+    public function getCuisses(): ?float
+    {
+        return $this->cuisses;
+    }
+
+    public function setCuisses(float $cuisses): self
+    {
+        $this->cuisses = $cuisses;
+
+        return $this;
+    }
+
+    public function getJambes(): ?float
+    {
+        return $this->jambes;
+    }
+
+    public function setJambes(float $jambes): self
+    {
+        $this->jambes = $jambes;
+
+        return $this;
     }
 }
