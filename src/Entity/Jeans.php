@@ -23,7 +23,7 @@ class Jeans
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=500)
+     * @ORM\Column(type="text")
      */
     private $description;
 
