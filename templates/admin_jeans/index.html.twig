@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeans index{% endblock %}
+
+{% block body %}
+    <h1>Jeans index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Picture</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jeans in jeans %}
+            <tr>
+                <td>{{ jeans.id }}</td>
+                <td>{{ jeans.name }}</td>
+                <td>{{ jeans.description }}</td>
+                <td>{{ jeans.price }}</td>
+                <td>{{ jeans.picture }}</td>
+                <td>
+                    <a href="{{ path('admin_jeans_show', {'id': jeans.id}) }}">show</a>
+                    <a href="{{ path('admin_jeans_edit', {'id': jeans.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_jeans_new') }}">Create new</a>
+{% endblock %}
