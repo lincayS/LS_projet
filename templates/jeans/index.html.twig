@@ -2,40 +2,47 @@
 
 {% block title %}Jeans index{% endblock %}
 
+{% block stylesheets %}
+ <link rel="stylesheet" href=" {{ asset('css/stylecat.css')}}">
+
+{% endblock %}
+
 {% block body %}
     <h1>Jeans index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Picture</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    
+        {% set myVal = 0 %}
+
         {% for jeans in jeans %}
-            <tr>
-                <td>{{ jeans.id }}</td>
-                <td>{{ jeans.name }}</td>
-                <td>{{ jeans.description }}</td>
-                <td>{{ jeans.price }}</td>
-                <td>{{ jeans.picture }}</td>
-                <td>
-                    <a href="{{ path('jeans_show', {'id': jeans.id}) }}">show</a>
-                    <a href="{{ path('jeans_edit', {'id': jeans.id}) }}">edit</a>
-                </td>
-            </tr>
+     {% set myVal = myVal + 1 %}
+     
+{% if ((myVal + 2) % 3) == 0 %}
+{{'<div class="all" >'}}
+{% endif %}
+<div class="liens">
+             <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" alt="jeans">
+            <p> {{ jeans.name }}</p>
+            </a>
+       
+        
+    
+      <form action="/cart/add" method="POST">
+        <input type="hidden" value="{{jeans.id }}" name="Jeans-cart-id" /> 
+        <input type="hidden" value="{{jeans.id }}" name="header" />
+
+        <button  id="btn" type="submit" class="btn btn-dark mt-3"><i class="fas fa-cart-plus"></i></button>
+      </form>
+ </div>
+{% if ((myVal + 2) % 3) == 2 %}
+{{'</div>'}}
+{% endif %}
+            
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+       
 
     <a href="{{ path('jeans_new') }}">Create new</a>
 {% endblock %}
