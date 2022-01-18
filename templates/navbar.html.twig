@@ -21,7 +21,20 @@
       <li class="nav-item active">
         <a class="nav-link" href=" {{path('jeans_index')}} ">Catalogue</a>
       </li>
-      
+      {% if is_granted('ROLE_ADMIN') %}
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+          Espace Aministrateur
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{path('admin_detail_commande_index')}}">Détails Commandes</a>
+          <a class="dropdown-item" href="{{path('admin_jeans_index')}}">Catalogue</a>
+          <a class="dropdown-item" href="{{path('admin_paiement_index')}}">Paiement</a>
+          <a class="dropdown-item" href="{{path('admin_purchase_index')}}">Commandes</a>
+          <a class="dropdown-item" href="{{path('admin_user_index')}}">Utilisateurs</a>
+        </div>
+      </li>
+      {% endif %}
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
