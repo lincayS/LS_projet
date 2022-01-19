@@ -45,27 +45,7 @@ class CartService
         $this->sessionInterface->set('cart', $cart);
     }
 
-    public function remove(Jeans $jeans)
-    {
-        $cart = $this->get();
-        $jeansId = $jeans->getId();
-
-        if(!isset($cart['elements'][$jeansId]))
-        {
-            return;
-        }
-
-        $cart['total'] = $cart['total'] - $jeans->getPrice();
-        $cart['elements'][$jeansId]['quantity'] = $cart['elements'][$jeansId]['quantity'] - 1;
-
-        if ($cart['elements'][$jeansId]['quantity']<=0)
-        {
-            unset($cart['elements'][$jeansId]);
-        }
-
-        $this->sessionInterface->set('cart', $cart);
-
-    }
+  
     public function clear()
     {
         $this->sessionInterface->remove('cart');
