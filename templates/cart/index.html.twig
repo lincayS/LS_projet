@@ -14,6 +14,8 @@
         <th>Nom</th>
         <th>Quantité</th>
         <th>Prix</th>
+                <th>Prix</th>
+
 
     </tr>
 
@@ -22,7 +24,9 @@
     <tr>
         <td>{{ element.jeans.name }}</td>
         <td>{{ element.quantity }}</td>
-        <td>{{ element.jeans.price }}</td>   
+        <td>{{ element.jeans.price }}</td>  
+        <td>{{ element.couleur }}</td>   
+ 
     </tr>
 
     {% endfor %}

@@ -2,6 +2,7 @@
 namespace App\Service;
 
 use App\Entity\Jeans;
+use PhpParser\Node\Expr\Cast\String_;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
@@ -24,16 +25,17 @@ class CartService
         ]);
     }
 
-    public function add(Jeans $jeans)
+    public function add(Jeans $jeans, ?string $couleur)
     {
         $cart = $this->get();
-        $jeansId = $jeans->getId();
+        $jeansId = $jeans->getId().$couleur;
 
         if (!isset($cart['elements'][$jeansId]))
         {
             $cart['elements'][$jeansId] = [
                 'jeans' => $jeans,
-                'quantity' => 0
+                'quantity' => 0,
+                'couleur' => $couleur,
             ];
         }
 

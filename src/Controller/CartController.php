@@ -27,7 +27,7 @@ class CartController extends AbstractController
      */
     public function add(CartService $cartService, Jeans $jeans): Response
     {
-        $cartService->add($jeans);
+        $cartService->add($jeans, null);
        return $this->redirectToRoute('cart_index');
     }
 
