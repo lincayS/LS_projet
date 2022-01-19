@@ -25,14 +25,13 @@
             </tr>
             <tr>
                 <th>Picture</th>
-                <td>{{ jeans.picture }}</td>
+                <td> <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" class=" w-25 " alt="jeans">
+</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('jeans_index') }}">back to list</a>
+    <a href="{{ path('catalog_index') }}">back to list</a>
 
-    <a href="{{ path('jeans_edit', {'id': jeans.id}) }}">edit</a>
 
-    {{ include('jeans/_delete_form.html.twig') }}
 {% endblock %}

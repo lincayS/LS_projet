@@ -19,20 +19,24 @@
 {% if ((myVal + 2) % 3) == 0 %}
 {{'<div class="all" >'}}
 {% endif %}
+<a href="{{ path('catalog_show', {'id': jeans.id}) }}">
+
 <div class="liens">
              <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" alt="jeans">
             <p> {{ jeans.name }}</p>
-            </a>
        
         
     
       <form action="/cart/add" method="POST">
         <input type="hidden" value="{{jeans.id }}" name="Jeans-cart-id" /> 
         <input type="hidden" value="{{jeans.id }}" name="header" />
-
-        <button  id="btn" type="submit" class="btn btn-dark mt-3"><i class="fas fa-cart-plus"></i></button>
+ <button  id="btn" type="submit" class="btn btn-dark mt-3"><i class="fas fa-cart-plus"></i></button>
       </form>
- </div>
+                    
+</div>
+</a>
+       
+ 
 {% if ((myVal + 2) % 3) == 2 %}
 {{'</div>'}}
 {% endif %}
@@ -44,5 +48,4 @@
         {% endfor %}
        
 
-    <a href="{{ path('jeans_new') }}">Create new</a>
 {% endblock %}
