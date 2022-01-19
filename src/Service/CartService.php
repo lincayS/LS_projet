@@ -2,7 +2,6 @@
 namespace App\Service;
 
 use App\Entity\Jeans;
-use PhpParser\Node\Expr\Cast\String_;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
@@ -45,7 +44,7 @@ class CartService
         $this->sessionInterface->set('cart', $cart);
     }
 
-  
+   
     public function clear()
     {
         $this->sessionInterface->remove('cart');
