@@ -21,6 +21,7 @@ class AdminDetailCommandeController extends AbstractController
      */
     public function index(DetailCommandeRepository $detailCommandeRepository): Response
     {
+        //on affiche les objets DetailCommandeRepository
         return $this->render('admin_detail_commande/index.html.twig', [
             'detail_commandes' => $detailCommandeRepository->findAll(),
         ]);
@@ -31,17 +32,26 @@ class AdminDetailCommandeController extends AbstractController
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $detailCommande = new DetailCommande();
+
+          // on instancie un nouvel espace avec la structure de l'entité detailCommande vide
+        $detailCommande = new DetailCommande();         
+        // on creer un formulaire a partir de detailCommandeType
         $form = $this->createForm(DetailCommandeType::class, $detailCommande);
+        //on recupere les données inscrites
         $form->handleRequest($request);
 
+        // si le formulair est soumis et est valide alors...
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($detailCommande);
+
+             //On demande à sauvegarder jeans en bdd
+            $entityManager->persist($detailCommande);             
+            //on valide la demande
             $entityManager->flush();
 
+            //on ridirige la page
             return $this->redirectToRoute('admin_detail_commande_index', [], Response::HTTP_SEE_OTHER);
         }
-
+        // on affiche le detailCommande et le formulaire
         return $this->renderForm('admin_detail_commande/new.html.twig', [
             'detail_commande' => $detailCommande,
             'form' => $form,
@@ -53,6 +63,7 @@ class AdminDetailCommandeController extends AbstractController
      */
     public function show(DetailCommande $detailCommande): Response
     {
+        //on affiche le detailCommande
         return $this->render('admin_detail_commande/show.html.twig', [
             'detail_commande' => $detailCommande,
         ]);
@@ -63,15 +74,21 @@ class AdminDetailCommandeController extends AbstractController
      */
     public function edit(Request $request, DetailCommande $detailCommande, EntityManagerInterface $entityManager): Response
     {
+ 
+         // on creer un formulaire a partir de detailCommandeType
         $form = $this->createForm(DetailCommandeType::class, $detailCommande);
+        //on recupere les données inscrites
         $form->handleRequest($request);
-
+         // si le formulaire est soumis et est valide alors...         
         if ($form->isSubmitted() && $form->isValid()) {
+            //on valide toutes les modifications apportées
             $entityManager->flush();
 
+            //on redirige la page
             return $this->redirectToRoute('admin_detail_commande_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        //on affiche le detailCommande et le formulaire
         return $this->renderForm('admin_detail_commande/edit.html.twig', [
             'detail_commande' => $detailCommande,
             'form' => $form,
@@ -83,11 +100,15 @@ class AdminDetailCommandeController extends AbstractController
      */
     public function delete(Request $request, DetailCommande $detailCommande, EntityManagerInterface $entityManager): Response
     {
+        //on verifie que le formulaire soit bien celui que l'on à envoyé
         if ($this->isCsrfTokenValid('delete'.$detailCommande->getId(), $request->request->get('_token'))) {
+            //on supprime le produit 
             $entityManager->remove($detailCommande);
+            //on applique la suppression en bdd
             $entityManager->flush();
         }
-
+        //on redirige
         return $this->redirectToRoute('admin_detail_commande_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+
