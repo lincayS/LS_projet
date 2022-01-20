@@ -31,7 +31,7 @@ class AdminJeansController extends AbstractController
      * @Route("/new", name="admin_jeans_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
-    {   // on instancie un nouvel espace avec la structur de l'entité jeans vide
+    {   // on instancie un nouvel espace avec la structure de l'entité jeans vide
         $jeans = new Jeans();
         // on creer un formulaire a partir de Jeans1Type
         $form = $this->createForm(Jeans1Type::class, $jeans);

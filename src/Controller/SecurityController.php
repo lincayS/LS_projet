@@ -18,9 +18,9 @@ class SecurityController extends AbstractController
         //     return $this->redirectToRoute('target_path');
         // }
 
-        // get the login error if there is one
+        // afficher l'erreur de login s'il y a une
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
+        // dernier username entré par le user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
@@ -31,6 +31,7 @@ class SecurityController extends AbstractController
      */
     public function logout(): void
     {
+        //métode: peut etre vide, elle agit sur la clé de deconnexion du pare-feu pour déconnecter le user 
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }
