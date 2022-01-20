@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Jeans;
 use App\Form\ColorJeansType;
-use App\Form\JeansType;
 use App\Repository\JeansRepository;
 use App\Service\CartService;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

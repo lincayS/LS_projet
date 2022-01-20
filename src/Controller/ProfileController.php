@@ -21,8 +21,9 @@ class ProfileController extends AbstractController
      * @Route("/", name="profile_show", methods={"GET"})
      */
     public function show(): Response
-    {
+    {   //on recupère l'objet dans le User
         $user = $this->getUser();
+        //on affiche l'objet
         return $this->render('profile/show.html.twig', [
             'user' => $user,
         ]);
@@ -33,16 +34,20 @@ class ProfileController extends AbstractController
      */
     public function edit(Request $request, EntityManagerInterface $entityManager): Response
     {
+         //on recupère l'objet dans le User
         $user = $this->getUser();
+        //on créer un formulaire a partir de User1Type
         $form = $this->createForm(User1Type::class, $user);
+        //on récupère les données du $form
         $form->handleRequest($request);
-
+        //si le formulaire est soumis et valide...
         if ($form->isSubmitted() && $form->isValid()) {
+            //on execute tout les changements effectués
             $entityManager->flush();
-
+            //on redirige la page
             return $this->redirectToRoute('profile_show', [], Response::HTTP_SEE_OTHER);
         }
-
+        //affiche le user et le formulaire
         return $this->renderForm('profile/edit.html.twig', [
             'user' => $user,
             'form' => $form,
