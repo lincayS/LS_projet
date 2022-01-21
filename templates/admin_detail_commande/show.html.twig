@@ -12,9 +12,30 @@
                 <td>{{ detail_commande.id }}</td>
             </tr>
             <tr>
-                <th>Quantite</th>
+                <th>Quantité</th>
+
                 <td>{{ detail_commande.quantite }}</td>
             </tr>
+                 {% for user in users %}
+            <tr>                
+                <th>Tour de hanches</th>
+                <td>{{ user.hanches }}</td>
+            </tr>
+             <tr>
+                <th>Tour de bassin</th>
+                <td>{{ user.bassin }}</td>
+            </tr>
+             <tr>
+                <th>Tour de cuisse</th>
+                <td>{{ user.cuisses }}</td>
+
+            </tr> 
+            <tr>
+                <th>Longueur de jambes</th>
+                <td>{{ user.jambes }}</td>
+
+            </tr>
+            {% endfor %}
         </tbody>
     </table>
 

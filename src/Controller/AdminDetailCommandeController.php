@@ -6,6 +6,7 @@ use App\Entity\DetailCommande;
 use App\Form\DetailCommandeType;
 use App\Repository\DetailCommandeRepository;
 use App\Repository\PurchaseRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,6 +27,7 @@ class AdminDetailCommandeController extends AbstractController
         return $this->render('admin_detail_commande/index.html.twig', [
             'detail_commandes' => $detailCommandeRepository->findAll(),
             'purchases' => $purchaseRepository->findAll(),
+
 
         ]);
     }
@@ -64,11 +66,15 @@ class AdminDetailCommandeController extends AbstractController
     /**
      * @Route("/{id}", name="admin_detail_commande_show", methods={"GET"})
      */
-    public function show(DetailCommande $detailCommande): Response
+    public function show(DetailCommande $detailCommande, UserRepository $userRepository, PurchaseRepository $purchaseRepository): Response
     {
         //on affiche le detailCommande
         return $this->render('admin_detail_commande/show.html.twig', [
             'detail_commande' => $detailCommande,
+            'users' => $userRepository->findAll(),
+            'purchases' => $purchaseRepository->findAll(),
+
+
         ]);
     }
 
