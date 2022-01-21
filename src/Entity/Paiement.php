@@ -33,6 +33,18 @@ class Paiement
      */
     private $purchase;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $paidAt;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $validated;
+
+   
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,4 +85,30 @@ class Paiement
 
         return $this;
     }
+
+    public function getPaidAt(): ?\DateTimeInterface
+    {
+        return $this->paidAt;
+    }
+
+    public function setPaidAt(?\DateTimeInterface $paidAt): self
+    {
+        $this->paidAt = $paidAt;
+
+        return $this;
+    }
+
+    public function getValidated(): ?bool
+    {
+        return $this->validated;
+    }
+
+    public function setValidated(?bool $validated): self
+    {
+        $this->validated = $validated;
+
+        return $this;
+    }
+
+   
 }
