@@ -29,7 +29,7 @@ class Paiement
 
     /**
      * @ORM\OneToOne(targetEntity=Purchase::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $purchase;
 

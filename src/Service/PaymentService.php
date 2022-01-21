@@ -11,7 +11,7 @@ class PaymentService
     public function __construct(CartService $cartService)
     {
         $this->cartService = $cartService;
-        $this->stripe = new StripeClient('sk_test_51KJfrlJLSprW6bh6oeXfVrE9BLkX74kVeJN5QzjEzY6pMf2WbOsWJ4ScJ5NF0c1uniEzqXwrTPkF3N6KVZsSErAQ001Glbi78g');
+        $this->stripe = new StripeClient('sk_test_51KKK2cEuqQhvC16yiqhMmntMstUf7YnkLVJgeQY2vjrGubptqus8i3vBr8iS4oSaXl6dWgh5PNuJnihIVuNb4OwC00WbP0XdAB');
     }
 
     public function create(): string
@@ -30,7 +30,7 @@ class PaymentService
         $protocol = $_SERVER['HTTPS'] ? 'https' : 'http';
         $host = $_SERVER['SERVER_NAME'];
         $successUrl = $protocol . '://' . $host .'/payment/success/{CHECKOUT_SESSION_ID}';
-        $failureUrl = $protocol . '://' . $host . '/payment/failure/{CHECKOUT_SESSION_ID}';
+        $failureUrl = $protocol . '://' . $host .'/payment/failure/{CHECKOUT_SESSION_ID}';
 
         $session = $this->stripe->checkout->sessions->create([
             'success_url' => $successUrl,
