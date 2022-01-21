@@ -11,7 +11,7 @@ class CartService
 
     private $sessionInterface;
     
-    // fonction magique pour ajouter des propriétés. Le paramètre permet d'agir sur la globale session.
+    // fonction magique pour initialiser des propriétés. Le paramètre permet d'agir sur la globale session.
     public function __construct(SessionInterface $sessionInterface)
     {
         // on recupere le composant SessionInterface
@@ -34,10 +34,10 @@ class CartService
         // on recupere l'id de l'entité jeans en bdd plus la couleur selectionnée
         $jeansId = $jeans->getId().$couleur;
 
-        //si on a un id et une couleur, alors...
+        //si on n'y a ni id ni couleur, alors...
         if (!isset($cart['elements'][$jeansId]))
         {   
-            //on transmet le panier a la vue
+            // on ajoute ce jean et cette couleur au panier avec une quantité à 0 pour l'instant
             $cart['elements'][$jeansId] = [
                 'jeans' => $jeans,
                 'quantity' => 0,
