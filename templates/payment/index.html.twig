@@ -3,5 +3,12 @@
 {% block title %}Hello PaymentController!{% endblock %}
 
 {% block body %}
-
+    <script>
+        (function(){
+            const stripe = Stripe('pk_test_51KJfrlJLSprW6bh6VhIviyLpXr7jo3Ne7yrq5Z1RmClwqD9wLFl6apCNvggWK5vQiI02iiSrp2EvcvyuDNKRWJ8v006nGnVJb6');
+            stripe.redirectToCheckout({
+                sessionId: "{{ sessionId }}"
+            });
+        })();
+    </script>
 {% endblock %}
