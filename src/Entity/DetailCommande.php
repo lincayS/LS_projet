@@ -34,6 +34,13 @@ class DetailCommande
      */
     private $quantite;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $couleur;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,4 +81,18 @@ class DetailCommande
 
         return $this;
     }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(string $couleur): self
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    
 }

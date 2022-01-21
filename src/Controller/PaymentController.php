@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\DetailCommande;
 use App\Entity\Paiement;
+use App\Entity\Purchase;
+use App\Repository\JeansRepository;
 use App\Repository\PaiementRepository;
 use App\Service\CartService;
 use DateTime;
@@ -39,7 +42,7 @@ class PaymentController extends AbstractController
     /**
      * @Route("/payment/success/{stripeSessionId}", name="payment_success")
      */
-    public function success(string $stripeSessionId, PaiementRepository $paiementRepository, CartService $cartService): Response
+    public function success(string $stripeSessionId, PaiementRepository $paiementRepository, CartService $cartService, JeansRepository $jeansRepository): Response
     {
         $paymentRequest = $paiementRepository->findOneBy([
             'stripeSessionId' => $stripeSessionId
@@ -51,8 +54,33 @@ class PaymentController extends AbstractController
 
         $paymentRequest->setValidated(true);
         $paymentRequest->setPaidAt(new DateTime());
-
+        
         $entityManager = $this->getDoctrine()->getManager();
+        
+        $order = new Purchase();
+        $order->setCreatedAt(new DateTime());
+
+        ////////https://xonatis.academy/videos/11.b.placing-order.mp4
+        //$order->setPaiement($paymentRequest);
+        ////////
+        $order->setClient($this->getUser());
+        $order->setReference(strval(rand(1000000, 9999999)));
+        $entityManager->persist($order);
+        
+
+        $cart = $cartService->get();
+        foreach ($cart['elements'] as $jeansId => $element)
+        {
+            $jeans = $jeansRepository->find($jeansId);
+            $orderedQuantity = new DetailCommande();
+            $orderedQuantity->setQuantite($element['quantity']);
+            $orderedQuantity->setCouleur($element['couleur']);
+
+            $orderedQuantity->setJeans($jeans);
+            $orderedQuantity->setPurchase($order);
+            $entityManager->persist($orderedQuantity);
+        }
+
         $entityManager->flush();
 
         $cartService->clear();

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\DetailCommande;
 use App\Form\DetailCommandeType;
 use App\Repository\DetailCommandeRepository;
+use App\Repository\PurchaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,11 +20,13 @@ class AdminDetailCommandeController extends AbstractController
     /**
      * @Route("/", name="admin_detail_commande_index", methods={"GET"})
      */
-    public function index(DetailCommandeRepository $detailCommandeRepository): Response
+    public function index(DetailCommandeRepository $detailCommandeRepository, PurchaseRepository $purchaseRepository): Response
     {
         //on affiche les objets DetailCommandeRepository
         return $this->render('admin_detail_commande/index.html.twig', [
             'detail_commandes' => $detailCommandeRepository->findAll(),
+            'purchases' => $purchaseRepository->findAll(),
+
         ]);
     }
 
