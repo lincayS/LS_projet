@@ -16,26 +16,24 @@
 
                 <td>{{ detail_commande.quantite }}</td>
             </tr>
-                 {% for user in users %}
             <tr>                
                 <th>Tour de hanches</th>
-                <td>{{ user.hanches }}</td>
+                <td>{{ detail_commande.purchase.client.hanches }}</td>
             </tr>
              <tr>
                 <th>Tour de bassin</th>
-                <td>{{ user.bassin }}</td>
+                <td>{{ detail_commande.purchase.client.bassin }}</td>
             </tr>
              <tr>
                 <th>Tour de cuisse</th>
-                <td>{{ user.cuisses }}</td>
+                <td>{{ detail_commande.purchase.client.cuisses }}</td>
 
             </tr> 
             <tr>
                 <th>Longueur de jambes</th>
-                <td>{{ user.jambes }}</td>
+                <td>{{ detail_commande.purchase.client.jambes }}</td>
 
             </tr>
-            {% endfor %}
         </tbody>
     </table>
 

@@ -21,12 +21,11 @@ class AdminDetailCommandeController extends AbstractController
     /**
      * @Route("/", name="admin_detail_commande_index", methods={"GET"})
      */
-    public function index(DetailCommandeRepository $detailCommandeRepository, PurchaseRepository $purchaseRepository): Response
+    public function index(DetailCommandeRepository $detailCommandeRepository): Response
     {
         //on affiche les objets DetailCommandeRepository
         return $this->render('admin_detail_commande/index.html.twig', [
             'detail_commandes' => $detailCommandeRepository->findAll(),
-            'purchases' => $purchaseRepository->findAll(),
 
 
         ]);
@@ -66,13 +65,11 @@ class AdminDetailCommandeController extends AbstractController
     /**
      * @Route("/{id}", name="admin_detail_commande_show", methods={"GET"})
      */
-    public function show(DetailCommande $detailCommande, UserRepository $userRepository, PurchaseRepository $purchaseRepository): Response
+    public function show(DetailCommande $detailCommande): Response
     {
         //on affiche le detailCommande
         return $this->render('admin_detail_commande/show.html.twig', [
             'detail_commande' => $detailCommande,
-            'users' => $userRepository->findAll(),
-            'purchases' => $purchaseRepository->findAll(),
 
 
         ]);

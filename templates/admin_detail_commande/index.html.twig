@@ -11,22 +11,23 @@
                 <th>Id</th>
                 <th>Commande Id</th>
                 <th>Quantite</th>
+                <th>Modèle</th>
                 <th>Couleur</th>
-
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for detail_commande in detail_commandes %}
-            <tr>
-                <td>{{ detail_commande.id }}</td>
-                        {% for purchase in purchases %}
+            <tr>       
 
-                <td>{{ purchase.id }}  </td> 
-                {% endfor %}
+                <td>{{ detail_commande.id }}</td>
+                <td>{{ detail_commande.purchase.reference }}</td>
+
                 <td>{{ detail_commande.quantite }}</td>
+                <td>{{ detail_commande.jeans.name }}</td>
+
                 <td>{{ detail_commande.couleur }}</td>
-  
+
                 <td>
                     <a href="{{ path('admin_detail_commande_show', {'id': detail_commande.id}) }}">show</a>
                     <a href="{{ path('admin_detail_commande_edit', {'id': detail_commande.id}) }}">edit</a>
