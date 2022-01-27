@@ -20,6 +20,7 @@
     </tr>
 
     {% for element in cart.elements %}
+    
 
     <tr>
         <td>{{ element.jeans.name }}</td>
@@ -33,10 +34,16 @@
     {% endfor %}
 
 </table>
-{% endif %}
+
       <a href="{{ path('cart_clear')}}" id="btn" type="" class="btn btn-dark  "></i> Vider le panier</a>
 
       <a href="{{ path('payment_index')}}" id="btn" type="" class="btn btn-dark  "><i class="fas fa-cart-plus"></i> Valider le panier</a>
+
+  {% else %}
+            <tr>
+                <td colspan="6">Le panier est vide</td>
+            </tr>
+{% endif %}
 
 
 {% endblock %}
