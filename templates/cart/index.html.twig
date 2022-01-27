@@ -14,7 +14,7 @@
         <th>Nom</th>
         <th>Quantité</th>
         <th>Prix</th>
-                <th>Prix</th>
+        <th>Couleur</th>
 
 
     </tr>
@@ -26,7 +26,8 @@
         <td>{{ element.quantity }}</td>
         <td>{{ element.jeans.price }}</td>  
         <td>{{ element.couleur }}</td>   
- 
+         <td><img src="{{ asset('uploads/' ~ element.jeans.picture) }}" class=" w-25 " id="img" alt="jeans"></td>   
+
     </tr>
 
     {% endfor %}
