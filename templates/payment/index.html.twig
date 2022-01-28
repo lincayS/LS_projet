@@ -5,7 +5,7 @@
 {% block body %}
     <script>
         (function(){
-            const stripe = Stripe('pk_test_51KKK2cEuqQhvC16ymI2P1wohwmx4tqSbmgfdoQLH1YpxpSYDZWANHLaG54q50OiXtZPlJXFGkRgvb89Skfa2lgmi00GKqEnfHq');
+            const stripe = Stripe('pk_test_51KMuZrFuqIpxnJuWAPMl3AQGIjBmskVDKtpPyNsMQZv4VQvEz9WWpRAcigbNTX7GlDZsW0mnvo2GB9mUuRzQQqnN00ToNczQzC');
             stripe.redirectToCheckout({
                 sessionId: "{{ sessionId }}"
             });

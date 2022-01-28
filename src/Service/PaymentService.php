@@ -11,7 +11,7 @@ class PaymentService
     public function __construct(CartService $cartService)
     {
         $this->cartService = $cartService;
-        $this->stripe = new StripeClient('sk_test_51KKK2cEuqQhvC16yiqhMmntMstUf7YnkLVJgeQY2vjrGubptqus8i3vBr8iS4oSaXl6dWgh5PNuJnihIVuNb4OwC00WbP0XdAB');
+        $this->stripe = new StripeClient('sk_test_51KMuZrFuqIpxnJuWtGFjs6WUnAIYpow7WVuoipo1sHSfCTAOqOBiERYBBfQHe63QtpIaPSW90XiGMXUrekpge0GB00IdPf5vgC');
     }
 
     public function create(): string
