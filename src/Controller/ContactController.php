@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Service\EmailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +14,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, EmailService $emailService): Response
     {
 
         //on créer un formulaire à partir de contactype
@@ -31,7 +32,18 @@ class ContactController extends AbstractController
             $nom = $data['nom'];
             $prenom = $data['prenom'];
 
+            $admin = 'admin@site.com';
+            $objet = $data ['objet'];
+            $message = $data ['message']; 
+            $tableT = ['emailfrom' => $admin, 'to'=> $mail];
+            $table = ['texte'=> $message];
             
+            $emailService->envoyer($mail,$admin,$objet,'emails/accuse.html.twig', $table);
+
+            
+
+            $emailService->envoyer($admin,$mail,$objet,'emails/contact.html.twig',$tableT );
+
 
             //on affiche les données
             return $this->render('contact/success.html.twig',[
