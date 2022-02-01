@@ -21,20 +21,19 @@
 {{'<div class="all" >'}}
 {% endif %}
 
-<div class="liens">
+    <div class="liens">
 
-<a href="{{ path('catalog_show', {'id': jeans.id}) }}">
+        <a href="{{ path('catalog_show', {'id': jeans.id}) }}">
 
-             <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" alt="jeans">
+            <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" alt="jeans">
             <p> {{ jeans.name }}</p>
        
-            </a> 
+        </a> 
 
-      <a href="{{ path('cart_add', {'id': jeans.id}) }}" id="btn" type="" class="btn btn-dark  "><i class="fas fa-cart-plus"></i></a>
 
       
                     
-</div>
+    </div>
 
        
  

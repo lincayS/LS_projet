@@ -1,6 +1,13 @@
 
 
-<ul class="nav mt-5 footer ">
+
+        {% block stylesheets %}
+<link rel="stylesheet" href=" {{ asset('css/styleglob.css')}}">
+
+        {% endblock %}
+
+<div class="footer">
+<ul class="nav mt-5">
   <li class="nav-item">
     <a class="nav-link text-reset " href=" {{path('mlegales')}} ">Mentions légales</a>
   </li>
@@ -12,3 +19,4 @@
   </li>
   
 </ul>
+</div>
