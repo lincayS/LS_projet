@@ -30,8 +30,12 @@
             </tr>
         </tbody>
     </table>
-{{ form(formAfficher)}}
+ {{ form_start(formAfficher) }}
+        {{ form_row(formAfficher.couleur) }}
+        
 
+        <button type="submit" class="btn"><i class="fas fa-cart-plus"></i></button>
+    {{ form_end(formAfficher) }}
     <a href="{{ path('catalog_index') }}">back to list</a>
 
 {% endblock %}

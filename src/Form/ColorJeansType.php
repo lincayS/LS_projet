@@ -27,8 +27,7 @@ class ColorJeansType extends AbstractType
             ],        
 
 
-        ]) 
-        ->add('valider', SubmitType::class);
+        ]); 
 
     }
 
