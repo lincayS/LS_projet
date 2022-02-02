@@ -4,12 +4,13 @@
 
 {% block body %}
     <h1>DetailCommande index</h1>
+    <a href="{{ path('admin_detail_commande_new') }}" class=" d-flex justify-content-end ">Create new</a>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Commande Id</th>
+                <th>Réferrence</th>
                 <th>Quantite</th>
                 <th>Modèle</th>
                 <th>Couleur</th>
@@ -20,7 +21,7 @@
         {% for detail_commande in detail_commandes %}
             <tr>       
 
-                <td>{{ detail_commande.id }}</td>
+                <td>{{ detail_commande.purchase.id }}</td>
                 <td>{{ detail_commande.purchase.reference }}</td>
 
                 <td>{{ detail_commande.quantite }}</td>
@@ -41,5 +42,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_detail_commande_new') }}">Create new</a>
 {% endblock %}
