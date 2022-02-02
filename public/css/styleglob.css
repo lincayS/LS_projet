@@ -11,3 +11,12 @@ top: 500px;
 bottom: auto;
 
 }
+
+@media only screen and (max-width:1100px) {
+   a.nav-link.text-reset{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+
+   }
+  }
