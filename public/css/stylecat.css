@@ -43,7 +43,7 @@ p{
 
 
 
-@media only screen and (max-width:650px) {
+@media only screen and (max-width:800px) {
     .all{
         flex-direction: column;
     }
