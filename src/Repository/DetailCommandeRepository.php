@@ -47,4 +47,18 @@ class DetailCommandeRepository extends ServiceEntityRepository
         ;
     }
     */
+    
+    public function findBySearch(string $value): array
+    {
+
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.purchase = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
 }
+
+    
+

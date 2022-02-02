@@ -21,11 +21,17 @@ class AdminDetailCommandeController extends AbstractController
     /**
      * @Route("/", name="admin_detail_commande_index", methods={"GET"})
      */
-    public function index(DetailCommandeRepository $detailCommandeRepository): Response
-    {
+    public function index(Request $request, DetailCommandeRepository $detailCommandeRepository): Response
+    {   
+        $search = $request->query->get('search');
+        if($search){
+            $commande = $detailCommandeRepository->findBySearch($search);
+        } else {
+            $commande = $detailCommandeRepository->findAll();
+        }
         //on affiche les objets DetailCommandeRepository
         return $this->render('admin_detail_commande/index.html.twig', [
-            'detail_commandes' => $detailCommandeRepository->findAll(),
+            'detail_commandes' => $commande
 
 
         ]);
