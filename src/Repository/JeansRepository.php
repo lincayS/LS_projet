@@ -52,7 +52,7 @@ class JeansRepository extends ServiceEntityRepository
     {
 
         return $this->createQueryBuilder('d')
-            ->andWhere('d.description = :val')
+            ->andWhere('d.name = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getResult();
