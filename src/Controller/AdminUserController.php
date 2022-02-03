@@ -19,10 +19,19 @@ class AdminUserController extends AbstractController
     /**
      * @Route("/", name="admin_user_index", methods={"GET"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function index(Request $request, UserRepository $userRepository): Response
     {
+        $search = $request->query->get('search');
+        if($search){
+            $commande = $userRepository->findBySearch($search);
+        } else {
+            $commande = $userRepository->findAll();
+        }
+        //on affiche les objets DetailCommandeRepository
         return $this->render('admin_user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'users' => $commande
+
+
         ]);
     }
 

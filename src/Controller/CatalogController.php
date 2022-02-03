@@ -21,10 +21,14 @@ class CatalogController extends AbstractController
      */
     public function index(Request $request, JeansRepository $jeansRepository): Response
     {
+        //on récupère la valeur de search dans l'url
         $search = $request->query->get('search');
+        // si cette valeur existe
         if($search){
+            //on appelle la fonction dans le repository
             $commande = $jeansRepository->findBySearch($search);
         } else {
+            //sinon, on recupère tous les objets jeans
             $commande = $jeansRepository->findAll();
         }
         //on affiche les objets Jeans

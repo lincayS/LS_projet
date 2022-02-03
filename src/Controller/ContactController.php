@@ -35,9 +35,11 @@ class ContactController extends AbstractController
             $admin = 'admin@site.com';
             $objet = $data ['objet'];
             $message = $data ['message']; 
+            // on passe des champs a l'emaiservice pour les afficher dans la vue
             $tableT = ['emailfrom' => $admin, 'to'=> $mail];
             $table = ['texte'=> $message];
             
+            //on appelle la fonction 'envoyer' de l'emailservice avec ses paramètres
             $emailService->envoyer($mail,$admin,$objet,'emails/accuse.html.twig', $table);
 
             
@@ -45,7 +47,7 @@ class ContactController extends AbstractController
             $emailService->envoyer($admin,$mail,$objet,'emails/contact.html.twig',$tableT );
 
 
-            //on affiche les données
+            //on transmet les données à la vue pour affichage
             return $this->render('contact/success.html.twig',[
 
                 'email' => $mail,
@@ -57,7 +59,7 @@ class ContactController extends AbstractController
             ]);
             //sinon,
         } else {
-            //on affiche le formulaire
+            //on transmet le formulaire
         return $this->renderForm('contact/index.html.twig', [
             'controller_name' => 'ContactController',
             'formAfficher' => $formulaire,
