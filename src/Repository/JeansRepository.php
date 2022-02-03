@@ -47,4 +47,16 @@ class JeansRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findBySearch(string $value): array
+    {
+
+        return $this->createQueryBuilder('d')
+            ->andWhere('d.description = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult();
+        ;
+    }
+
 }

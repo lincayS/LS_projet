@@ -9,8 +9,11 @@
 {% endblock %}
 
 {% block body %}
-<h2>Choisissez&nbsp;votre&nbsp;modèle:</h2>
-
+<h2 class=" m-5 ">Choisissez&nbsp;votre&nbsp;modèle:</h2>
+<form class="form-inline my-2 my-lg-0 col-6 " method="GET">
+      <input class="form-control mr-sm-2 w-25" name="search" type="search" placeholder="Chercher..." aria-label="Search">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+    </form>  
     
         {% set myVal = 0 %}
 

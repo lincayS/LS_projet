@@ -5,8 +5,8 @@
 {% block body %}
     <h1 class=" m-5 ">DetailCommande index</h1>
 <form class="form-inline my-2 my-lg-0 col-6 " method="GET">
-      <input class="form-control mr-sm-2 w-25" name="search" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2 w-25" name="search" type="search" placeholder="Id" aria-label="Search">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
     </form>    
     <a href="{{ path('admin_detail_commande_new') }}" class=" d-flex justify-content-end ">Create new</a>
 
@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Réferrence</th>
+                <th>Référence</th>
                 <th>Quantite</th>
                 <th>Modèle</th>
                 <th>Couleur</th>

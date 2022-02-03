@@ -19,11 +19,19 @@ class CatalogController extends AbstractController
     /**
      * @Route("/", name="catalog_index", methods={"GET"})
      */
-    public function index(JeansRepository $jeansRepository): Response
+    public function index(Request $request, JeansRepository $jeansRepository): Response
     {
-        //on affiche tout les objets jeans
+        $search = $request->query->get('search');
+        if($search){
+            $commande = $jeansRepository->findBySearch($search);
+        } else {
+            $commande = $jeansRepository->findAll();
+        }
+        //on affiche les objets Jeans
         return $this->render('catalog/index.html.twig', [
-            'jeans' => $jeansRepository->findAll(),
+            'jeans' => $commande
+
+
         ]);
     }
 
