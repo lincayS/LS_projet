@@ -11,8 +11,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mailer\MailerInterface;
+use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
+use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use App\Repository\UserRepository;
+
+
 class RegistrationController extends AbstractController
 {
+
+    private $verifyEmailHelper;
+    private $mailer;
+    
+    public function __construct(VerifyEmailHelperInterface $helper, MailerInterface $mailer)
+    {
+        $this->verifyEmailHelper = $helper;
+        $this->mailer = $mailer;
+    }
     /**
      * @Route("/register", name="app_register")
      */
@@ -20,6 +36,7 @@ class RegistrationController extends AbstractController
     {
         // on instancie un nouvel espace avec la structure de l'entité user vide
         $user = new User();
+
         //on créer un formulaire à partie de RegistrationFormType
         $form = $this->createForm(RegistrationFormType::class, $user);
         //on récupère les données envoyées
@@ -36,10 +53,25 @@ class RegistrationController extends AbstractController
 
             //on demende d'enregistrer user en bdd
             $entityManager->persist($user);
+
+            
             //on valide la demande
             $entityManager->flush();
             // do anything else you need here, like send an email
-
+$signatureComponents = $this->verifyEmailHelper->generateSignature(
+                'registration_confirmation_route',
+                $user->getId(),
+                $user->getEmail(),
+                ['id' => $user->getId()] // add the user's id as an extra query param
+                                 );
+        
+            $email = new TemplatedEmail();
+            $email->from('send@example.com');
+            $email->to($user->getEmail());
+            $email->htmlTemplate('registration/confirmation_email.html.twig');
+            $email->context(['signedUrl' => $signatureComponents->getSignedUrl()]);
+            
+            $this->mailer->send($email);
             //on redirige
             return $this->redirectToRoute('home');
         }
@@ -49,4 +81,42 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
+
+     /**
+     * @Route("/verify", name="registration_confirmation_route")
+     */
+    public function verifyUserEmail(Request $request, UserRepository $userRepository): Response
+    {
+        $id = $request->get('id'); // retrieve the user id from the url
+
+        // Verify the user id exists and is not null
+        if (null === $id) {
+            return $this->redirectToRoute('home');
+        }
+
+        $user = $userRepository->find($id);
+
+        // Ensure the user exists in persistence
+        if (null === $user) {
+            return $this->redirectToRoute('home');
+        }
+
+        // Do not get the User's Id or Email Address from the Request object
+        try {
+            $this->verifyEmailHelper->validateEmailConfirmation($request->getUri(), $user->getId(), $user->getEmail());
+        } catch (VerifyEmailExceptionInterface $e) {
+            $this->addFlash('verify_email_error', $e->getReason());
+
+            return $this->redirectToRoute('app_register');
+        }
+
+        // Mark your user as verified. e.g. switch a User::verified property to true
+
+        $this->addFlash('success', 'Your e-mail address has been verified.');
+
+        return $this->redirectToRoute('home');
+    }
 }
+
+
+
