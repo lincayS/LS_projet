@@ -3,15 +3,61 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1>Inscription</h1>
+<div class='container'> 
+    {{ form_start(registrationForm) }}         
+        
+        {{ form_errors(registrationForm.email) }}
+        {{ form_widget(registrationForm.email, { 'attr': {'class': 'mb-3', 'placeholder': 'Email'} }) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        
+        {{ form_errors(registrationForm.nom) }}
+        {{ form_widget(registrationForm.nom, { 'attr': {'class': 'mb-3', 'placeholder': 'Nom'} }) }}
+        
+        {{ form_errors(registrationForm.prenom) }}
+        {{ form_widget(registrationForm.prenom, { 'attr': {'class': 'mb-3', 'placeholder': 'Prénom'} }) }}
+        
+        <p class=' mt-5 '>Adresse:</p>
+        {{ form_errors(registrationForm.addNumero) }}
+        {{ form_widget(registrationForm.addNumero, { 'attr': {'class': 'mb-3', 'placeholder': 'n°'} }) }}
+        
+        {{ form_errors(registrationForm.rue) }}
+        {{ form_widget(registrationForm.rue, { 'attr': {'class': 'mb-3', 'placeholder': 'rue'} }) }}
+        
+        {{ form_errors(registrationForm.complement) }}
+        {{ form_widget(registrationForm.complement, { 'attr': {'class': 'mb-3', 'placeholder': "Complément d'adresse"} }) }}
+        
+        {{ form_errors(registrationForm.codePostal) }}
+        {{ form_widget(registrationForm.codePostal, { 'attr': {'class': 'mb-3', 'placeholder': 'Code postal'} }) }}
+        
+        {{ form_errors(registrationForm.ville) }}
+        {{ form_widget(registrationForm.ville, { 'attr': {'class': 'mb-3', 'placeholder': 'Ville'} }) }}
+        
+        <p class=' mt-5 '>Mot de passe:</p>
+        {{ form_errors(registrationForm.plainPassword) }}
+        {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'mb-3', 'placeholder': 'Mot de passe'} }) }}
+       <h2 class='mt-5 '>Mensurations:</h2> 
+        
+        <p class=''>Tour de:</p>
+        {{ form_errors(registrationForm.hanches) }}
+        {{ form_widget(registrationForm.hanches, { 'attr': {'class': 'mb-3', 'placeholder': 'Hanches'} }) }}
+        
+        {{ form_errors(registrationForm.bassin) }}
+        {{ form_widget(registrationForm.bassin, { 'attr': {'class': 'mb-3', 'placeholder': 'Bassin'} }) }}
+        
+        {{ form_errors(registrationForm.cuisses) }}
+        {{ form_widget(registrationForm.cuisses, { 'attr': {'class': 'mb-3', 'placeholder': 'Cuisse'} }) }}
+        <p class=' mt-5 '>Longeur des jambes: </p>
+        {{ form_errors(registrationForm.jambes) }}
+        {{ form_widget(registrationForm.jambes, { 'attr': {'class': 'mb-3', 'placeholder': 'Jambe'} }) }}
+        
+        <a class=" " href=" {{path('cgu')}} ">Conditions générales</a>,
+        <a class=" " href=" {{path('pconfidentialite')}} ">Politique de confidentialité</a>.
 
-        <button type="submit" class="btn">Register</button>
+        {{ form_errors(registrationForm.agreeTerms) }}
+        {{ form_widget(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">S'inscrire</button>
     {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
