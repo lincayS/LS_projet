@@ -16,7 +16,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use App\Repository\UserRepository;
-
+use Doctrine\ORM\EntityManager;
 
 class RegistrationController extends AbstractController
 {
@@ -85,7 +85,7 @@ $signatureComponents = $this->verifyEmailHelper->generateSignature(
      /**
      * @Route("/verify", name="registration_confirmation_route")
      */
-    public function verifyUserEmail(Request $request, UserRepository $userRepository): Response
+    public function verifyUserEmail(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
         $id = $request->get('id'); // retrieve the user id from the url
 
@@ -112,6 +112,14 @@ $signatureComponents = $this->verifyEmailHelper->generateSignature(
 
         // Mark your user as verified. e.g. switch a User::verified property to true
 
+        $user->setRoles(array('ROLE_CLIENT'));
+
+        //on demende d'enregistrer user en bdd
+        $entityManager->persist($user);
+
+            
+        //on valide la demande
+        $entityManager->flush();
         $this->addFlash('success', 'Your e-mail address has been verified.');
 
         return $this->redirectToRoute('home');
