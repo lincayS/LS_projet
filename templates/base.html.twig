@@ -26,7 +26,9 @@
     <body>
     {{ include('navbar.html.twig')}}
     <div class='container-fluid'> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block body %}{% endblock %}
+        <meta>
     </div>
 
         {{ include('footer.html.twig')}}
