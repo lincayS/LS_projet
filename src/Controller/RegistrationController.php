@@ -17,17 +17,21 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Security\Core\Security;
+
 
 class RegistrationController extends AbstractController
 {
 
     private $verifyEmailHelper;
     private $mailer;
+    private $security;
     
-    public function __construct(VerifyEmailHelperInterface $helper, MailerInterface $mailer)
+    public function __construct(VerifyEmailHelperInterface $helper, MailerInterface $mailer, Security $security)
     {
         $this->verifyEmailHelper = $helper;
         $this->mailer = $mailer;
+        $this->security= $security;
     }
     /**
      * @Route("/register", name="app_register")
@@ -123,6 +127,31 @@ $signatureComponents = $this->verifyEmailHelper->generateSignature(
         $this->addFlash('success', 'Your e-mail address has been verified.');
 
         return $this->redirectToRoute('home');
+    }
+
+     /**
+     * @Route("/resend", name="registration_resend")
+     */
+    public function resend(UserRepository $userRepository, Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager)
+    {
+/** @var User $user */
+$user = $this->security->getUser();
+        $signatureComponents = $this->verifyEmailHelper->generateSignature(
+            'registration_confirmation_route',
+            $user->getId(),
+            $user->getEmail(),
+            ['id' => $user->getId()] // add the user's id as an extra query param
+                             );
+    
+        $email = new TemplatedEmail();
+        $email->from('send@example.com');
+        $email->to($user->getEmail());
+        $email->htmlTemplate('registration/confirmation_email.html.twig');
+        $email->context(['signedUrl' => $signatureComponents->getSignedUrl()]);
+        
+        $this->mailer->send($email);
+        return $this->redirectToRoute('home');
+
     }
 }
 
