@@ -12,6 +12,11 @@ bottom: auto;
 
 }
 
+#resend{
+
+    font-size: 10px;
+}
+
 @media only screen and (max-width:970px) {
     .lien{
         font-size: 25px;

@@ -38,6 +38,8 @@ security:
          - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/profile, roles: ROLE_USER }
          - { path: ^/payment, roles: ROLE_CLIENT }
+         - { path: ^/resend, roles: ROLE_USER }
+
 when@test:
     security:
         password_hashers:
