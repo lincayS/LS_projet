@@ -70,7 +70,7 @@ $signatureComponents = $this->verifyEmailHelper->generateSignature(
                                  );
         
             $email = new TemplatedEmail();
-            $email->from('send@example.com');
+            $email->from('admin@ls-couture.com');
             $email->to($user->getEmail());
             $email->htmlTemplate('registration/confirmation_email.html.twig');
             $email->context(['signedUrl' => $signatureComponents->getSignedUrl()]);
@@ -144,7 +144,7 @@ $user = $this->security->getUser();
                              );
     
         $email = new TemplatedEmail();
-        $email->from('send@example.com');
+        $email->from('admin@ls-couture.com');
         $email->to($user->getEmail());
         $email->htmlTemplate('registration/confirmation_email.html.twig');
         $email->context(['signedUrl' => $signatureComponents->getSignedUrl()]);

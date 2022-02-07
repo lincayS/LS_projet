@@ -32,7 +32,7 @@ class ContactController extends AbstractController
             $nom = $data['nom'];
             $prenom = $data['prenom'];
 
-            $admin = 'admin@site.com';
+            $admin = 'admin@ls-couture.com';
             $objet = $data ['objet'];
             $message = $data ['message']; 
             // on passe des champs a l'emaiservice pour les afficher dans la vue
