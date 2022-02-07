@@ -4,7 +4,12 @@
 
 {% block body %}
     <h1>User</h1>
-
+{% if is_granted('ROLE_CLIENT') == false %}
+            <hr>
+        <a class=" " href=" {{path('registration_resend')}} ">Renvoyer&nbsp;le&nbsp;mail&nbsp;de&nbsp;vérification. </a>
+        {% else %}
+           <p>Votre email est vérifié</p>
+           {% endif %}
     <table class="table">
         <tbody>
             <tr>

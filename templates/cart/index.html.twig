@@ -36,9 +36,12 @@
 </table>
 
       <a href="{{ path('cart_clear')}}" id="btn" type="" class="btn btn-danger  "></i> Vider le panier</a>
-
+{% if is_granted('ROLE_CLIENT') == true %}
       <a href="{{ path('payment_index')}}" id="btn" type="" class="btn btn-light  "><i class="fas fa-cart-plus"></i> Valider le panier</a>
 
+{% else %}
+    <p>Vérifiez votre email pour passer commande (voir le profil).</p>
+{% endif %}
   {% else %}
             <tr>
                 <td colspan="6">Le panier est vide</td>

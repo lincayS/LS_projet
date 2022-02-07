@@ -51,12 +51,6 @@
       <li class="nav-item active ">
         <a class="nav-link text-reset lien " href=" {{path('app_logout')}} ">Se&nbsp;déconnecter</a>
       </li>
-            {% if is_granted('ROLE_CLIENT') == false %}
-            <hr>
-        <li class="nav-item active">
-        <a class="nav-link text-center " id="resend" href=" {{path('registration_resend')}} ">Renvoyer&nbsp;le&nbsp;mail&nbsp;de&nbsp;vérification pour&nbsp;pouvoir&nbsp;passer&nbsp;commande. </a>
-       </li>
-       {% endif %}
       {% endif %}
     </ul>
     
