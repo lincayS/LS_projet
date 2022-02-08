@@ -2,6 +2,7 @@
 
 {% block title %}Jeans{% endblock %}
 
+
 {% block body %}
     <h1 class='m-5'>Jeans</h1>
     <div class='container row col-12 ml-3'>
@@ -12,7 +13,7 @@
     </div>
     <div class='container col-10 '> 
     <p class='col-8'>{{ jeans.description }}</p>
-<p>{{ jeans.price }}€</p>
+    <p>{{ jeans.price }}€</p>
     </div>
     </div>
 
@@ -27,7 +28,7 @@
         <button type="submit" class="btn"><i class="fas fa-cart-plus"></i></button>
     {{ form_end(formAfficher) }}
     </div>    
-<div class='d-inline col-1'>
+<div class='d-inline col-2 mw-25' id='carousel'>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
   <div class="carousel-inner">
     
