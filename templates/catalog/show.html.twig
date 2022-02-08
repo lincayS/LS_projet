@@ -1,17 +1,21 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Jeans{% endblock %}
+{% block stylesheets %}
+ <link rel="stylesheet" href=" {{ asset('css/styleshow.css')}}">
+ <link rel="stylesheet" href=" {{ asset('css/styleglob.css')}}">
 
+{% endblock %}
 
 {% block body %}
     <h1 class='m-5'>Jeans</h1>
-    <div class='container row col-12 ml-3'>
+    <div class='container row col-12 '>
     <div class='container  col-2'> 
     <h4>{{ jeans.name }}</h4>    
-    <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" class="img-fluid " alt="jeans {{ jeans.name }}">
+    <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" class=" " alt="jeans {{ jeans.name }}">
 
     </div>
-    <div class='container col-10 '> 
+    <div class='container col-8 offset-1 '> 
     <p class='col-8'>{{ jeans.description }}</p>
     <p>{{ jeans.price }}€</p>
     </div>
@@ -28,18 +32,18 @@
         <button type="submit" class="btn"><i class="fas fa-cart-plus"></i></button>
     {{ form_end(formAfficher) }}
     </div>    
-<div class='d-inline col-2 mw-25' id='carousel'>
+<div class='' id='carousel'>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
   <div class="carousel-inner">
     
     <div class="carousel-item active">
-      <img src=" {{ asset('img/darkblue.png')}}" class="d-inline w-100" alt="...">
+      <img src=" {{ asset('img/darkblue.png')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src=" {{ asset('img/lightblue.png')}}" class="d-inline w-100" alt="...">
+      <img src=" {{ asset('img/lightblue.png')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item ">
-      <img src=" {{ asset('img/black.png')}}" class="d-inline w-100" alt="...">
+      <img src=" {{ asset('img/black.png')}}" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item ">
       <img src=" {{ asset('img/grey.png')}}" class="d-inline w-100" alt="...">
