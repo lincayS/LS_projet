@@ -9,14 +9,14 @@
 
 {% block body %}
     <h1 class='m-5'>Jeans</h1>
-    <div class='container row col-12 '>
+    <div class='container row col-12 ' id='container'>
     <div class='container  col-2'> 
     <h4>{{ jeans.name }}</h4>    
     <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" class=" " alt="jeans {{ jeans.name }}">
 
     </div>
-    <div class='container col-8 offset-1 '> 
-    <p class='col-8'>{{ jeans.description }}</p>
+    <div class='container col-10'> 
+    <p id='description'>{{ jeans.description }}</p>
     <p>{{ jeans.price }}€</p>
     </div>
     </div>
