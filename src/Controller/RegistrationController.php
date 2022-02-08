@@ -95,14 +95,14 @@ $signatureComponents = $this->verifyEmailHelper->generateSignature(
 
         // Verify the user id exists and is not null
         if (null === $id) {
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('profile_show');
         }
 
         $user = $userRepository->find($id);
 
         // Ensure the user exists in persistence
         if (null === $user) {
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('profile_show');
         }
 
         // Do not get the User's Id or Email Address from the Request object
@@ -126,7 +126,7 @@ $signatureComponents = $this->verifyEmailHelper->generateSignature(
         $entityManager->flush();
         $this->addFlash('success', 'Your e-mail address has been verified.');
 
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('profile_show');
     }
 
      /**

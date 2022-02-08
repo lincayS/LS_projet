@@ -6,9 +6,10 @@
     <h1>User</h1>
 {% if is_granted('ROLE_CLIENT') == false %}
             <hr>
+            <p class=" text-danger ">Veuillez vérifier votre email pour pouvoir passer commande.</p>
         <a class=" " href=" {{path('registration_resend')}} ">Renvoyer&nbsp;le&nbsp;mail&nbsp;de&nbsp;vérification. </a>
         {% else %}
-           <p>Votre email est vérifié</p>
+           <p class=" text-success ">Votre email est vérifié.</p>
            {% endif %}
     <table class="table">
         <tbody>
