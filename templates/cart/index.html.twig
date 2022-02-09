@@ -9,7 +9,7 @@
     Total : {{ cart.total }}
 </div>
 
-<table>
+<table class="table">
     <tr>
         <th>Nom</th>
         <th>Quantité</th>
@@ -23,13 +23,17 @@
     
 
     <tr>
-        <td>{{ element.jeans.name }}</td>
+        <td class='col-4'>
+        <div>
+        {{ element.jeans.name }}   
+        </div>
+        <div class=''><img src="{{ asset('uploads/' ~ element.jeans.picture) }}" class=" w-25 " id="img" alt="jeans"></div>
+        </td>
         <td>{{ element.quantity }}</td>
         <td>{{ element.jeans.price }}</td>  
         <td>{{ element.couleur }}</td>   
 
     </tr>
-         <td><img src="{{ asset('uploads/' ~ element.jeans.picture) }}" class=" w-25 " id="img" alt="jeans"></td>   
 
     {% endfor %}
 

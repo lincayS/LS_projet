@@ -3,8 +3,9 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Inscription</h1>
-<div class='container'> 
+<div class='container col-6'>    
+ <h1 class='my-5'>Inscription</h1>
+
     {{ form_start(registrationForm) }}         
         
         {{ form_errors(registrationForm.email) }}
@@ -51,13 +52,12 @@
         {{ form_errors(registrationForm.jambes) }}
         {{ form_widget(registrationForm.jambes, { 'attr': {'class': 'mb-3', 'placeholder': 'Jambe'} }) }}
         
-        <a class=" " href=" {{path('cgu')}} ">Conditions générales</a>,
-        <a class=" " href=" {{path('pconfidentialite')}} ">Politique de confidentialité</a>.
+        <a class=" linkz " href=" {{path('cgu')}} ">Conditions générales</a>,
+        <a class=" linkz " href=" {{path('pconfidentialite')}} ">Politique de confidentialité</a>.
 
-        {{ form_errors(registrationForm.agreeTerms) }}
-        {{ form_widget(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.agreeTerms, { 'label': "J'ai lu et j'accepte les termes et conditions"}) }}
 
-        <button type="submit" class="btn">S'inscrire</button>
+        <button type="submit" class="btn btns">S'inscrire</button>
     {{ form_end(registrationForm) }}
     </div>
 {% endblock %}
