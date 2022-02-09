@@ -51,10 +51,10 @@
         <p class=' mt-5 '>Longeur des jambes: </p>
         {{ form_errors(registrationForm.jambes) }}
         {{ form_widget(registrationForm.jambes, { 'attr': {'class': 'mb-3', 'placeholder': 'Jambe'} }) }}
-        
+        <small>
         <a class=" linkz " href=" {{path('cgu')}} ">Conditions générales</a>,
         <a class=" linkz " href=" {{path('pconfidentialite')}} ">Politique de confidentialité</a>.
-
+        </small>
         {{ form_row(registrationForm.agreeTerms, { 'label': "J'ai lu et j'accepte les termes et conditions"}) }}
 
         <button type="submit" class="btn btns">S'inscrire</button>

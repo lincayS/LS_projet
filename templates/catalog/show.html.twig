@@ -8,8 +8,9 @@
 {% endblock %}
 
 {% block body %}
+<div class="container offset-md-1">
     <h1 class='m-5'>Jeans</h1>
-    <div class='container row col-12 ml-3' id='container'>
+    <div class='container row col-12 ' id='container'>
     <div class='container  col-2'> 
     <h4>{{ jeans.name }}</h4>    
     <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" class=" " alt="jeans {{ jeans.name }}">
@@ -29,7 +30,7 @@
         {{ form_row(formAfficher.couleur) }}
         
 
-        <button type="submit" class="btn btns w-50"><i class="fas fa-cart-plus"></i></button>
+        <button type="submit" class="btn btns mb-5 "><i class="fas fa-cart-plus"></i> Ajouter</button>
     {{ form_end(formAfficher) }}
     </div>    
 <div class='' id='carousel'>
@@ -64,6 +65,6 @@
 </div>
 </div>
 </div>    
-<a href="{{ path('catalog_index') }}" class='linkz'>Retour à la liste</a>
-
+<a href="{{ path('catalog_index') }}" class='linkz mt-5 '>Retour à la liste</a>
+</div>
 {% endblock %}

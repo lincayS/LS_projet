@@ -9,7 +9,7 @@
 #description{
     width: 70%;
 }    
-@media only screen and (max-width:650px) {
+@media only screen and (max-width:775px) {
     
   #titre{
 align-items: center;  }
