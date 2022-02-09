@@ -37,14 +37,14 @@ class ContactController extends AbstractController
             $message = $data ['message']; 
             // on passe des champs a l'emaiservice pour les afficher dans la vue
             $tableT = ['emailfrom' => $admin, 'to'=> $mail];
-            $table = ['texte'=> $message];
+            $table = ['texte'=> $message, 'nom'=>$nom, 'prenom'=>$prenom, 'mail'=>$mail];
             
             //on appelle la fonction 'envoyer' de l'emailservice avec ses paramètres
-            $emailService->envoyer($mail,$admin,$objet,'emails/accuse.html.twig', $table);
+            $emailService->envoyer($mail,$admin,$objet,'emails/contact.html.twig', $table);
 
             
 
-            $emailService->envoyer($admin,$mail,$objet,'emails/contact.html.twig',$tableT );
+            $emailService->envoyer($admin,$mail,$objet,'emails/accuse.html.twig',$tableT );
 
 
             //on transmet les données à la vue pour affichage

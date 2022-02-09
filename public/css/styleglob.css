@@ -9,12 +9,16 @@
 position: relative;
 top: 500px;
 bottom: auto;
+background-color: rgba(202, 177, 117, 1);
 
 }
 
 #resend{
 
     font-size: 10px;
+}
+#navbar{
+    background-color: rgba(202, 177, 117, 1);
 }
 
 @media only screen and (max-width:970px) {
