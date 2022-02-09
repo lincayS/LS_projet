@@ -5,6 +5,16 @@
 {% block body %}
 
 <div class="  col-5 offset-1"> 
-{{ form(formAfficher)}}
+    {{ form_start(formAfficher) }}         
+        {{ form_row(formAfficher.nom) }}
+        {{ form_row(formAfficher.prenom) }}
+        {{ form_row(formAfficher.email) }}
+        {{ form_row(formAfficher.objet) }}
+        {{ form_row(formAfficher.message) }}
+
+        {{ form_row(formAfficher.valider, { 'attr': {'class': 'btns'} }) }}
+
+          {{ form_end(formAfficher) }}         
+  
 </div>
 {% endblock %}

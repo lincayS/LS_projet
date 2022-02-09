@@ -1,4 +1,55 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+   <p>Email</p>
+   {{ form_errors(form.email) }}
+        {{ form_widget(form.email, { 'attr': {'class': 'mb-3', 'placeholder': 'Email'} }) }}
+
+        
+        <p>Nom</p>
+        {{ form_errors(form.nom) }}
+        {{ form_widget(form.nom, { 'attr': {'class': 'mb-3', 'placeholder': 'Nom'} }) }}
+        
+        <p>Prenom</p>
+        {{ form_errors(form.prenom) }}
+        {{ form_widget(form.prenom, { 'attr': {'class': 'mb-3', 'placeholder': 'Prénom'} }) }}
+        
+        <p class=' mt-5 '>Adresse:</p>
+        <p>N°</p>
+        {{ form_errors(form.addNumero) }}
+        {{ form_widget(form.addNumero, { 'attr': {'class': 'mb-3', 'placeholder': 'n°'} }) }}
+        
+        <p>Rue</p>
+        {{ form_errors(form.rue) }}
+        {{ form_widget(form.rue, { 'attr': {'class': 'mb-3', 'placeholder': 'rue'} }) }}
+        
+        <p>Complément d'adresse</p>
+        {{ form_errors(form.complement) }}
+        {{ form_widget(form.complement, { 'attr': {'class': 'mb-3', 'placeholder': "Complément d'adresse"} }) }}
+        
+        <p>Code postale</p>
+        {{ form_errors(form.codePostal) }}
+        {{ form_widget(form.codePostal, { 'attr': {'class': 'mb-3', 'placeholder': 'Code postal'} }) }}
+        
+        <p>Ville</p>
+        {{ form_errors(form.ville) }}
+        {{ form_widget(form.ville, { 'attr': {'class': 'mb-3', 'placeholder': 'Ville'} }) }}
+        
+        <h2 class='mt-5 '>Mensurations:</h2> 
+        
+        <p class=''>Tour de:</p>
+        <p>Hanches</p>
+        {{ form_errors(form.hanches) }}
+        {{ form_widget(form.hanches, { 'attr': {'class': 'mb-3', 'placeholder': 'Hanches'} }) }}
+        
+        <p>Bassin</p>
+        {{ form_errors(form.bassin) }}
+        {{ form_widget(form.bassin, { 'attr': {'class': 'mb-3', 'placeholder': 'Bassin'} }) }}
+        
+        <p>Cuisses</p>
+        {{ form_errors(form.cuisses) }}
+        {{ form_widget(form.cuisses, { 'attr': {'class': 'mb-3', 'placeholder': 'Cuisse'} }) }}
+        <p class=' mt-5 '>Longeur des jambes: </p>
+        <p></p>
+        {{ form_errors(form.jambes) }}
+        {{ form_widget(form.jambes, { 'attr': {'class': 'mb-3', 'placeholder': 'Jambe'} }) }}
+            <button class="btn btns">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

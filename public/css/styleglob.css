@@ -21,6 +21,13 @@ background-color: rgba(202, 177, 117, 1);
     background-color: rgba(202, 177, 117, 1);
 }
 
+.btns{
+    background-color: rgb(8, 170, 175, 1);
+}
+.linkz{
+    color: rgb(8, 170, 175, 1);
+}
+
 @media only screen and (max-width:970px) {
     .lien{
         font-size: 25px;
