@@ -2,6 +2,8 @@
    <p>Email</p>
    {{ form_errors(form.email) }}
         {{ form_widget(form.email, { 'attr': {'class': 'mb-3', 'placeholder': 'Email'} }) }}
+    
+    <a href="{{ path('app_forgot_password_request') }}" class='linkz'>Modifier le mot de passe</a>
 
         
         <p>Nom</p>

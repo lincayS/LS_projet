@@ -27,6 +27,10 @@ background-color: rgba(202, 177, 117, 1);
 .linkz{
     color: rgb(8, 170, 175, 1);
 }
+#btnr{
+    background-color: rgb(147, 107, 58, 1);
+
+}
 
 @media only screen and (max-width:970px) {
     .lien{
