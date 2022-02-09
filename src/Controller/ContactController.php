@@ -36,7 +36,7 @@ class ContactController extends AbstractController
             $objet = $data ['objet'];
             $message = $data ['message']; 
             // on passe des champs a l'emaiservice pour les afficher dans la vue
-            $tableT = ['emailfrom' => $admin, 'to'=> $mail];
+            $tableT = ['emailfrom' => $admin, 'to'=> $mail,'nom'=>$nom, 'prenom'=>$prenom];
             $table = ['texte'=> $message, 'nom'=>$nom, 'prenom'=>$prenom, 'mail'=>$mail];
             
             //on appelle la fonction 'envoyer' de l'emailservice avec ses paramètres
