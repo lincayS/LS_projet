@@ -15,7 +15,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Id de payment</th>
+                <th>Id de commande</th>
                 <th>Référence</th>
                 <th>Quantité</th>
                 <th>Modèle</th>
@@ -26,7 +27,7 @@
         <tbody>
         {% for detail_commande in detail_commandes %}
             <tr>       
-
+                <td>{{ detail_commande.purchase.paymentRequest.id }}</td>
                 <td>{{ detail_commande.purchase.id }}</td>
                 <td>{{ detail_commande.purchase.reference }}</td>
 

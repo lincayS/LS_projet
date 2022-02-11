@@ -33,6 +33,12 @@ class Purchase
      */
     private $client;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Paiement::class, cascade={"persist", "remove"})
+     */
+    private $paymentRequest;
+
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -73,4 +79,18 @@ class Purchase
 
         return $this;
     }
+
+    public function getPaymentRequest(): ?Paiement
+    {
+        return $this->paymentRequest;
+    }
+
+    public function setPaymentRequest(?Paiement $paymentRequest): self
+    {
+        $this->paymentRequest = $paymentRequest;
+
+        return $this;
+    }
+
+    
 }
