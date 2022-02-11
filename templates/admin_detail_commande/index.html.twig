@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DetailCommande index{% endblock %}
+{% block title %}Detail Commande {% endblock %}
 
 {% block body %}
-    <h1 class=" m-5 ">DetailCommande index</h1>
+    <h1 class=" m-5 ">Detail des Commandes </h1>
     
     <form class="form-inline my-2 my-lg-0 col-6 " method="GET">
       <input class="form-control mr-sm-2 w-25" name="search" type="search" placeholder="Id" aria-label="Search">
@@ -17,7 +17,7 @@
             <tr>
                 <th>Id</th>
                 <th>Référence</th>
-                <th>Quantite</th>
+                <th>Quantité</th>
                 <th>Modèle</th>
                 <th>Couleur</th>
                 <th>actions</th>
@@ -36,8 +36,8 @@
                 <td>{{ detail_commande.couleur }}</td>
 
                 <td>
-                    <a href="{{ path('admin_detail_commande_show', {'id': detail_commande.id}) }}">show</a>
-                    <a href="{{ path('admin_detail_commande_edit', {'id': detail_commande.id}) }}">edit</a>
+                    <a href="{{ path('admin_detail_commande_show', {'id': detail_commande.id}) }}">Ouvrir</a>
+                    <a href="{{ path('admin_detail_commande_edit', {'id': detail_commande.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

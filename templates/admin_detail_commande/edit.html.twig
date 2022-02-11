@@ -3,11 +3,11 @@
 {% block title %}Edit DetailCommande{% endblock %}
 
 {% block body %}
-    <h1>Edit DetailCommande</h1>
+    <h1>Detail des Commandes</h1>
 
     {{ include('admin_detail_commande/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('admin_detail_commande_index') }}">back to list</a>
+    <a href="{{ path('admin_detail_commande_index') }}">Retour à la liste</a>
 
     {{ include('admin_detail_commande/_delete_form.html.twig') }}
 {% endblock %}

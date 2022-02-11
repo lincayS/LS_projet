@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Purchase{% endblock %}
+{% block title %}Commande{% endblock %}
 
 {% block body %}
-    <h1>Purchase</h1>
+    <h1>Commande</h1>
 
     <table class="table">
         <tbody>
@@ -12,7 +12,7 @@
                 <td>{{ purchase.id }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th>Créé à</th>
                 <td>{{ purchase.createdAt ? purchase.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
@@ -22,9 +22,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_purchase_index') }}">back to list</a>
+    <a href="{{ path('admin_purchase_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('admin_purchase_edit', {'id': purchase.id}) }}">edit</a>
+    <a href="{{ path('admin_purchase_edit', {'id': purchase.id}) }}">Modifier</a>
 
     {{ include('admin_purchase/_delete_form.html.twig') }}
 {% endblock %}

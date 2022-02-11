@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paiement index{% endblock %}
+{% block title %}Paiement {% endblock %}
 
 {% block body %}
-    <h1>Paiement index</h1>
+    <h1>Paiement </h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>CreatedAt</th>
+                <th>Créé à</th>
                 <th>StripeSessionId</th>
                 <th>actions</th>
             </tr>
@@ -21,17 +21,17 @@
                 <td>{{ paiement.createdAt ? paiement.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ paiement.stripeSessionId }}</td>
                 <td>
-                    <a href="{{ path('admin_paiement_show', {'id': paiement.id}) }}">show</a>
-                    <a href="{{ path('admin_paiement_edit', {'id': paiement.id}) }}">edit</a>
+                    <a href="{{ path('admin_paiement_show', {'id': paiement.id}) }}">Ouvrir</a>
+                    <a href="{{ path('admin_paiement_edit', {'id': paiement.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Le tableux est vide.</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('admin_paiement_new') }}">Create new</a>
+    <a href="{{ path('admin_paiement_new') }}">Créer un nouveau</a>
 {% endblock %}

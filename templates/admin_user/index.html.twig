@@ -14,15 +14,15 @@
                 <th>Id</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Password</th>
+                <th>MDP</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>AddNumero</th>
+                <th>Adresse: Numero</th>
                 <th>Rue</th>
                 <th>Complement</th>
-                <th>CodePostal</th>
+                <th>Code Postal</th>
                 <th>Ville</th>
-                <th>Hanches</th>
+                <th>Mensurations: Hanches</th>
                 <th>Bassin</th>
                 <th>Cuisses</th>
                 <th>Jambes</th>
@@ -48,17 +48,17 @@
                 <td>{{ user.cuisses }}</td>
                 <td>{{ user.jambes }}</td>
                 <td>
-                    <a href="{{ path('admin_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('admin_user_show', {'id': user.id}) }}">Ouvrir</a>
+                    <a href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="16">no records found</td>
+                <td colspan="16">Le tableaux est vide</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('admin_user_new') }}">Create new</a>
+    <a href="{{ path('admin_user_new') }}">Créer un nouveau</a>
 {% endblock %}

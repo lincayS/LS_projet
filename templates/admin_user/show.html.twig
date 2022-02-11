@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Utilisateur{% endblock %}
 
 {% block body %}
     <h1>User</h1>
@@ -20,7 +20,7 @@
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
+                <th>MDP</th>
                 <td>{{ user.password }}</td>
             </tr>
             <tr>
@@ -32,7 +32,7 @@
                 <td>{{ user.prenom }}</td>
             </tr>
             <tr>
-                <th>AddNumero</th>
+                <th>Adresse: Numero</th>
                 <td>{{ user.addNumero }}</td>
             </tr>
             <tr>
@@ -52,7 +52,7 @@
                 <td>{{ user.ville }}</td>
             </tr>
             <tr>
-                <th>Hanches</th>
+                <th>Mensurations: Hanches</th>
                 <td>{{ user.hanches }}</td>
             </tr>
             <tr>
@@ -70,9 +70,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_user_index') }}">back to list</a>
+    <a href="{{ path('admin_user_index') }}">Retour à la liste</a>-
 
-    <a href="{{ path('admin_user_edit', {'id': user.id}) }}">edit</a>
+    <a href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifier</a>
 
     {{ include('admin_user/_delete_form.html.twig') }}
 {% endblock %}

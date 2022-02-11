@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}profil{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+
+<div class="container offset-1 ">
+    <h2 class="my-5">Profil</h2>
 {% if is_granted('ROLE_CLIENT') == false %}
             <hr>
             <p class=" text-danger ">Veuillez vérifier votre email pour pouvoir passer commande.</p>
@@ -14,15 +16,6 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            
-            <tr>
                 <th>Nom</th>
                 <td>{{ user.nom }}</td>
             </tr>
@@ -31,7 +24,16 @@
                 <td>{{ user.prenom }}</td>
             </tr>
             <tr>
-                <th>AddNumero</th>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            
+            
+            <tr>
+            <th colspan="4"> <h4>Adresse:</h4> </th>
+            </tr>
+            <tr>
+                <th>N°</th>
                 <td>{{ user.addNumero }}</td>
             </tr>
             <tr>
@@ -39,16 +41,19 @@
                 <td>{{ user.rue }}</td>
             </tr>
             <tr>
-                <th>Complement</th>
+                <th>Complément</th>
                 <td>{{ user.complement }}</td>
             </tr>
             <tr>
-                <th>CodePostal</th>
+                <th>Code Postal</th>
                 <td>{{ user.codePostal }}</td>
             </tr>
             <tr>
                 <th>Ville</th>
                 <td>{{ user.ville }}</td>
+            </tr>
+            <tr>
+            <th colspan="4"> <h4>Mensurations:</h4> </th>
             </tr>
             <tr>
                 <th>Hanches</th>
@@ -70,6 +75,6 @@
     </table>
 
 
-    <a href="{{ path('profile_edit', {'id': user.id}) }}">Modifier</a>
-
+    <a href="{{ path('profile_edit', {'id': user.id}) }}" class="linkz">Modifier</a>
+</div>
 {% endblock %}

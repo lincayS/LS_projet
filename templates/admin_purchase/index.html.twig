@@ -1,37 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Purchase index{% endblock %}
+{% block title %}Commande{% endblock %}
 
 {% block body %}
-    <h1>Purchase index</h1>
+    <h1>Commande</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>CreatedAt</th>
-                <th>Reference</th>
+                <th>Client</th>
+                <th>Créé à</th>
+                <th>Référence</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for purchase in purchases %}
             <tr>
+
                 <td>{{ purchase.id }}</td>
+                <td>{{ purchase.client.nom }} {{ purchase.client.prenom }}</td>
+
                 <td>{{ purchase.createdAt ? purchase.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ purchase.reference }}</td>
                 <td>
-                    <a href="{{ path('admin_purchase_show', {'id': purchase.id}) }}">show</a>
-                    <a href="{{ path('admin_purchase_edit', {'id': purchase.id}) }}">edit</a>
+                    <a href="{{ path('admin_purchase_show', {'id': purchase.id}) }}">Ouvrir</a>
+                    <a href="{{ path('admin_purchase_edit', {'id': purchase.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Le tableux est vide</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('admin_purchase_new') }}">Create new</a>
+    <a href="{{ path('admin_purchase_new') }}">Créer un nouveau</a>
 {% endblock %}

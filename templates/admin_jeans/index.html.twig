@@ -3,16 +3,16 @@
 {% block title %}Jeans index{% endblock %}
 
 {% block body %}
-    <h1>Jeans index</h1>
+    <h1>Les jeans</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
+                <th>Nom</th>
                 <th>Description</th>
-                <th>Price</th>
-                <th>Picture</th>
+                <th>Prix</th>
+                <th>Image</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,17 +25,17 @@
                 <td>{{ jeans.price }}</td>
                 <td>  <img src="{{ asset('uploads/' ~ jeans.picture) }}" class=" w-25 " alt="jeans"> </td>
                 <td>
-                    <a href="{{ path('admin_jeans_show', {'id': jeans.id}) }}">show</a>
-                    <a href="{{ path('admin_jeans_edit', {'id': jeans.id}) }}">edit</a>
+                    <a href="{{ path('admin_jeans_show', {'id': jeans.id}) }}">Ouvrir</a>
+                    <a href="{{ path('admin_jeans_edit', {'id': jeans.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Le tableau est vide</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('admin_jeans_new') }}">Create new</a>
+    <a href="{{ path('admin_jeans_new') }}">Créer un nouveau</a>
 {% endblock %}
