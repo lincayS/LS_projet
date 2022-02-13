@@ -60,9 +60,7 @@ class PaymentController extends AbstractController
         $order = new Purchase();
         $order->setCreatedAt(new DateTime());
 
-        ////////https://xonatis.academy/videos/11.b.placing-order.mp4
         $order->setPaymentRequest($paymentRequest);
-        ////////
         $order->setClient($this->getUser());
         $order->setReference(strval(rand(1000000, 9999999)));
         $entityManager->persist($order);
