@@ -1,41 +1,44 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Libre Baskerville', serif;
 }
 
-.footer{
-position: relative;
-top: 500px;
-bottom: auto;
-background-color: rgba(202, 177, 117, 1);
+.footer {
+    position: relative;
+    top: 500px;
+    bottom: auto;
+    background-color: rgba(202, 177, 117, 1);
 
 }
 
-#resend{
+#resend {
 
     font-size: 10px;
 }
-#navbar{
+
+#navbar {
     background-color: rgba(202, 177, 117, 1);
 }
 
-.btns{
+.btns {
     background-color: rgb(8, 170, 175, 1);
 }
-.linkz{
+
+.linkz {
     color: rgb(8, 170, 175, 1);
 }
-#btnr{
+
+#btnr {
     background-color: rgb(147, 107, 58, 1);
 
 }
 
 @media only screen and (max-width:970px) {
-    .lien{
+    .lien {
         font-size: 25px;
         display: flex;
         justify-content: center;
     }
-  }
+}

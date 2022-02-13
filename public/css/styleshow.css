@@ -1,25 +1,32 @@
-
-#carousel{
+#carousel {
     width: 150px;
 }
-#img{
-        width: 100px;
+
+#img {
+    width: 100px;
+}
+
+#description {
+    width: 70%;
+}
+
+@media only screen and (max-width:775px) {
+
+    #titre {
+        align-items: center;
     }
 
-#description{
-    width: 70%;
-}    
-@media only screen and (max-width:775px) {
-    
-  #titre{
-align-items: center;  }
-#container{
-    display: flex;
-    flex-direction: column;
-}
+    #container {
+        display: flex;
+        flex-direction: column;
+    }
 
-#description{
-    width: 100%;
-}   
-}
+    #description {
+        width: 100%;
+    }
 
+    #carousel {
+        margin-left: 50px;
+    }
+
+}

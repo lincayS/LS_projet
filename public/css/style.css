@@ -1,32 +1,32 @@
+body {
 
-
-body{
-    
     height: 100vh;
 }
 
-#half{
-    
+#half {
+
     margin-top: 10%;
     margin-left: 10%;
     display: flex;
-    
+
 
 }
-#titre{
+
+#titre {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    
+
 }
 
 
-p{
+p {
     font-size: 6em;
     font-style: italic;
     margin-bottom: 30px;
 }
-h1{
+
+h1 {
     font-weight: normal;
     display: flex;
 }
@@ -34,11 +34,16 @@ h1{
 
 
 @media only screen and (max-width:970px) {
-  #half{
-      flex-direction: column;
-      margin-top: 20px;
-  }
-  #titre{
-align-items: center;  }
+    #half {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    #titre {
+        align-items: center;
+    }
+    img {
+    width: 100%;
+    }
 }
 
