@@ -1,22 +1,19 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href=" {{ asset('css/styleglob.css')}}">
 
-
-
-        {% block stylesheets %}
-<link rel="stylesheet" href=" {{ asset('css/styleglob.css')}}">
-
-        {% endblock %}
+{% endblock %}
 
 <div class="footer">
-<ul class="nav mt-5 d-lg-flex flex-column text-center ">
-  <li class="nav-item">
-    <a class="nav-link text-reset " href=" {{path('mlegales')}} ">Mentions légales</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link text-reset " href=" {{path('pconfidentialite')}} ">Politique de confidentialité</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link text-reset " href=" {{path('cgu')}} ">Conditions Générales</a>
-  </li>
-  
-</ul>
+	<ul class="nav mt-5 d-lg-flex flex-column text-center ">
+		<li class="nav-item">
+			<a class="nav-link text-reset " href=" {{path('mlegales')}} ">Mentions légales</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-reset " href=" {{path('pconfidentialite')}} ">Politique de confidentialité</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link text-reset " href=" {{path('cgu')}} ">Conditions Générales</a>
+		</li>
+
+	</ul>
 </div>

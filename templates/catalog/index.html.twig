@@ -1,55 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Jeans index{% endblock %}
+{% block title %}Jeans index
+{% endblock %}
 
 {% block stylesheets %}
- <link rel="stylesheet" href=" {{ asset('css/stylecat.css')}}">
- <link rel="stylesheet" href=" {{ asset('css/styleglob.css')}}">
+	<link rel="stylesheet" href=" {{ asset('css/stylecat.css')}}">
+	<link rel="stylesheet" href=" {{ asset('css/styleglob.css')}}">
 
 {% endblock %}
 
 {% block body %}
-<h2 class=" m-5 ">Choisissez&nbsp;votre&nbsp;modèle:</h2>
-<form class="form-inline my-2 my-lg-0 col-6 " method="GET">
-      <input class="form-control mr-sm-2 w-25" name="search" type="search" placeholder="Chercher..." aria-label="Search">
-      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-    </form>  
-    
-        {% set myVal = 0 %}
+	<h2 class=" m-5 ">Choisissez&nbsp;votre&nbsp;modèle:</h2>
+	<form class="form-inline my-2 my-lg-0 col-6 " method="GET">
+		<input class="form-control mr-sm-2 w-25" name="search" type="search" placeholder="Chercher..." aria-label="Search">
+		<button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+			<i class="fas fa-search"></i>
+		</button>
+	</form>
 
-        {% for jeans in jeans %}
-     {% set myVal = myVal + 1 %}
-     
-{% if ((myVal + 2) % 3) == 0 %}
-{{'<div class="all" >'}}
-{% endif %}
+	{% set myVal = 0 %}
 
-    <div class="liens">
+	{% for jeans in jeans %}
+		{% set myVal = myVal + 1 %}
 
-        <a href="{{ path('catalog_show', {'id': jeans.id}) }}">
+		{% if ((myVal + 2) % 3) == 0 %}
+			{{'<div class="all" >'}}
+		{% endif %}
 
-            <img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" alt="jeans">
-            <p> {{ jeans.name }}</p>
+		<div class="liens">
 
-        </a> 
+			<a href="{{ path('catalog_show', {'id': jeans.id}) }}">
+
+				<img src="{{ asset('uploads/' ~ jeans.picture) }}" id="img" alt="jeans">
+				<p>
+					{{ jeans.name }}</p>
+
+			</a>
 
 
-                  <p> {{ jeans.price }}€</p>
+			<p>
+				{{ jeans.price }}€</p>
 
-                    
-    </div>
 
-       
- 
-{% if ((myVal + 2) % 3) == 2 %}
-{{'</div>'}}
-{% endif %}
-            
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-       
+		</div>
+
+
+		{% if ((myVal + 2) % 3) == 2 %}
+			{{'</div>'}}
+		{% endif %}
+
+	{% else %}
+		<tr>
+			<td colspan="6">no records found</td>
+		</tr>
+	{% endfor %}
+
 
 {% endblock %}

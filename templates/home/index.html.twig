@@ -1,19 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController!
+{% endblock %}
 {% block stylesheets %}
- <link rel="stylesheet" href=" {{ asset('css/style.css')}}">
- <link rel="stylesheet" href=" {{ asset('css/styleglob.css')}}">
+	<link rel="stylesheet" href=" {{ asset('css/style.css')}}">
+	<link rel="stylesheet" href=" {{ asset('css/styleglob.css')}}">
 
 {% endblock %}
 {% block body %}
 
-    
-    <div id="half">
-        <img src=" {{ asset('img/logoLSdone.png')}}" alt="Logo">
-        <div id="titre">
-        <p>LS</p>
-        <h1>A vous les jeans sur mesure&nbsp;!</h1>
-        </div>
-    </div>
+
+	<div id="half">
+		<img src=" {{ asset('img/logoLSdone.png')}}" alt="Logo">
+		<div id="titre">
+			<p>LS</p>
+			<h1>A vous les jeans sur mesure&nbsp;!</h1>
+		</div>
+	</div>
 {% endblock %}
