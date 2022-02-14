@@ -15,11 +15,11 @@ class ColorJeansType extends AbstractType
         $builder->add('couleur', ChoiceType::class, [
             'choices' => [
                 'couleur' => [
-                    'bleu_fonce' => 'Bleu_fonce',
-                    'bleu_clair' => 'Bleu_clair',
-                    'noir' => 'Noir',
-                    'gris' => 'Gris',
-                    'blanc' => 'Blanc',
+                    'Bleu foncé' => 'Bleu foncé',
+                    'Bleu clair' => 'Bleu clair',
+                    'Noir' => 'Noir',
+                    'Gris' => 'Gris',
+                    'Blanc' => 'Blanc',
 
                 ],
 
