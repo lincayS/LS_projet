@@ -8,25 +8,21 @@
       <input class="form-control mr-sm-2 w-25" name="search" type="search" placeholder="Nom" aria-label="Search">
       <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
     </form>   
-    <table class="table">
+    <table class="table col-12">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>MDP</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Adresse: Numero</th>
+                <th>Adresse:</th>
+                <th>N°</th>
                 <th>Rue</th>
                 <th>Complement</th>
                 <th>Code Postal</th>
                 <th>Ville</th>
-                <th>Mensurations: Hanches</th>
-                <th>Bassin</th>
-                <th>Cuisses</th>
-                <th>Jambes</th>
-                <th>actions</th>
+               
             </tr>
         </thead>
         <tbody>
@@ -35,18 +31,15 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
                 <td>{{ user.nom }}</td>
                 <td>{{ user.prenom }}</td>
+                <td></td>
                 <td>{{ user.addNumero }}</td>
                 <td>{{ user.rue }}</td>
                 <td>{{ user.complement }}</td>
                 <td>{{ user.codePostal }}</td>
                 <td>{{ user.ville }}</td>
-                <td>{{ user.hanches }}</td>
-                <td>{{ user.bassin }}</td>
-                <td>{{ user.cuisses }}</td>
-                <td>{{ user.jambes }}</td>
+                
                 <td>
                     <a href="{{ path('admin_user_show', {'id': user.id}) }}">Ouvrir</a>
                     <a href="{{ path('admin_user_edit', {'id': user.id}) }}">Modifier</a>
